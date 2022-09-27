@@ -3,9 +3,9 @@ This is the Pytorch implementation of "Conv2NeXt: Reconsidering ConvNeXt Network
 # Requirements
 To use this project, you need to ensure the following requirements are installed.
 - Python >= 3.8
-- torch==1.8.0
-- torchvision==0.9.0
-- timm==0.3.2
+- torch == 1.8.0
+- torchvision == 0.9.0
+- timm == 0.3.2
 # Dataset
 The program will download CIFAR10/100 dataset automatically.
 
