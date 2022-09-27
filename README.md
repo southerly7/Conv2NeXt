@@ -8,6 +8,7 @@ To use this project, you need to ensure the following requirements are installed
 - timm==0.3.2
 # Dataset
 The program will download CIFAR10/100 dataset automatically.
+
 Download the Tiny-ImageNet classification dataset and structure the data as follows:
 ```
 /path/to/tiny-imagenet/
