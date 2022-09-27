@@ -23,6 +23,7 @@ from engine import train_one_epoch, evaluate
 from utils import NativeScalerWithGradNormCount as NativeScaler
 import utils
 import models.convnext
+import models.conv2next
 
 
 
@@ -49,7 +50,7 @@ def get_args_parser():
                         help='gradient accumulation steps')
 
     # Model parameters
-    parser.add_argument('--model', default='convnext_tiny', type=str, metavar='MODEL',
+    parser.add_argument('--model', default='conv2next_base', type=str, metavar='MODEL',
                         help='Name of model to train')
     parser.add_argument('--drop_rate', type=float, default=0.0, metavar='PCT',
                         help='Dropout rate (default: 0.)')
@@ -61,7 +62,7 @@ def get_args_parser():
     parser.add_argument('--warmup_epochs_dp', type=int, default=20, metavar='N',
                         help='epochs to warmup drop_path, if scheduler supports')
 
-    parser.add_argument('--input_size', default=224, type=int,
+    parser.add_argument('--input_size', default=32, type=int,
                         help='image input size')
     parser.add_argument('--layer_scale_init_value', default=1e-6, type=float,
                         help="Layer scale initial values")
@@ -146,14 +147,14 @@ def get_args_parser():
     parser.add_argument('--model_prefix', default='', type=str)
 
     # Dataset parameters
-    parser.add_argument('--data_path', default='/datasets/imagenet_full_size/061417/', type=str,
+    parser.add_argument('--data_path', default='/datasets/cifar10_full_size/061417/', type=str,
                         help='dataset path')
     parser.add_argument('--eval_data_path', default=None, type=str,
                         help='dataset path for evaluation')
-    parser.add_argument('--nb_classes', default=1000, type=int,
+    parser.add_argument('--nb_classes', default=10, type=int,
                         help='number of the classification types')
     parser.add_argument('--imagenet_default_mean_and_std', type=str2bool, default=True)
-    parser.add_argument('--data_set', default='IMNET', choices=['CIFAR10','CIFAR100', 'SVHN', 'IMNET', 'TINY_IMNET', 'image_folder'],
+    parser.add_argument('--data_set', default='CIFAR10', choices=['CIFAR10','CIFAR100', 'SVHN', 'IMNET', 'TINY_IMNET', 'image_folder'],
                         type=str, help='ImageNet dataset path')
     parser.add_argument('--output_dir', default='',
                         help='path where to save, empty for no saving')
